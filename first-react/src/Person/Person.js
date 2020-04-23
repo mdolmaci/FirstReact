@@ -3,8 +3,7 @@ import React from 'react';
 const person = (props) => {
   return (
     <div>
-      <p>Hi! I'm {props.name} and {props.age} years old!
-      My favorite number is {Math.floor(Math.random()*12)}.</p>
+      <p onClick={props.click}>Hi! I'm {props.name} and {props.age} years old!</p>
       <p>{props.children}</p>
     </div>
   )
