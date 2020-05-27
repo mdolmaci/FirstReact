@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import styled from "styled-components";
 import './App.css';
 //import Radium, { StyleRoot } from "radium"
-import styled from "styled-components";
 import Person from './Person/Person';
 
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${props => props.alt ? 'red' : 'green'};
   color: white;
   font: inherit;
   border: 1x solid blue;
@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
     color: black;
   }
 `;
@@ -88,13 +88,13 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = "red";
+/*      style.backgroundColor = "red";
       style[":hover"] = {
         backgroundColor: "salmon",
         color: "black"
       }
     }
-
+*/
     const classes = [];
     if (this.state.persons.length <= 2) {
       classes.push("red"); // [red]
@@ -108,9 +108,9 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm React App</h1>
         <h2 className={classes.join(" ")}>It works!</h2>
-        <StyledButton
-          style={style}
-          onClick={this.togglePersonsHandler}>Show Persons</StyledButton>
+        <button
+          className="button"
+          onClick={this.togglePersonsHandler}>Show Persons</button>
         <p>Our team members are: </p>
         {persons}
       </div>
