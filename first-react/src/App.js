@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
+//import Radium, { StyleRoot } from "radium"
+import styled from "styled-components";
 import Person from './Person/Person';
+
+const StyledButton = styled.button`
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1x solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -44,11 +60,16 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1x solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     }
 
     let persons = null;
@@ -66,21 +87,36 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "salmon",
+        color: "black"
+      }
     }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); // [red]
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); // [red, bold]
+    }
+
 
     return (
       <div className="App">
         <h1>Hi, I'm React App</h1>
-        <h2>It works!</h2>
-        <button
+        <h2 className={classes.join(" ")}>It works!</h2>
+        <StyledButton
           style={style}
-          onClick={this.togglePersonsHandler}>Show Persons</button>
+          onClick={this.togglePersonsHandler}>Show Persons</StyledButton>
         <p>Our team members are: </p>
         {persons}
       </div>
     );
 
-    //return React.createElement('div', {ClassName: 'App'}, React.createElement('h1', null, 'Hi, My name is React!'));
+    return React.createElement('div', {ClassName: 'App'}, React.createElement('h1', null, 'Hi, My name is React!'));
   }
 }
 
