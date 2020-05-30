@@ -1,33 +1,20 @@
 import React, { Component } from 'react';
-
 import classes from './App.css';
-
 import Person from './Person/Person';
-
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
-
-
 class App extends Component {
-  
-state = {
+  state = {
     persons: [
-      
-{ id: 'asfa1', name: 'Max', age: 28 },
-      
-{ id: 'vasdf1', name: 'Manu', age: 29 },
-      
-{ id: 'asdf11', name: 'Stephanie', age: 26 }
+      { id: 'asfa1', name: 'Max', age: 28 },
+      { id: 'vasdf1', name: 'Manu', age: 29 },
+      { id: 'asdf11', name: 'Stephanie', age: 26 }
     ],
-    
-otherState: 'some other value',
-    
-showPersons: false
+    otherState: 'some other value',
+    showPersons: false
   }
 
- 
-
-nameChangedHandler = ( event, id ) => {
+  nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex( p => {
       return p.id === id;
     } );
@@ -94,17 +81,12 @@ nameChangedHandler = ( event, id ) => {
         <p className={assignedClasses.join( ' ' )}>This is really working!</p>
         <button
           className={btnClass}
-          
-onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        
-{persons}
-      
-</div>
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
+      </div>
     );
-    
-// return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
-  
-}
+    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
+  }
 }
 
 export default App;
